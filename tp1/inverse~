@@ -1,0 +1,7 @@
+(defun inverse(l)
+	(cond ((null l) l)
+		(T (alafin2 (car l) (inverse (cdr l)) )
+	)	
+
+
+)

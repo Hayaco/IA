@@ -1,0 +1,8 @@
+(defun alafin ( x l) 
+	( if (null l)
+		(list x)
+		( cons (car l) (alafin ( x cdr(l))  )
+	)
+
+)
+)

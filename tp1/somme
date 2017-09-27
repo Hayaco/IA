@@ -1,0 +1,10 @@
+(defun somme(l)
+	(cond ((null l) l)
+		(T  
+			(if (numberp (car l))			
+				( + (car l) (somme (cdr l)))
+			)
+		)
+	)
+
+)

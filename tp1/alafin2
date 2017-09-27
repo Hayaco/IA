@@ -1,0 +1,5 @@
+(defun alafin2 ( x l)
+	(append l (list x))
+
+
+)
