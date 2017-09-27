@@ -1,5 +1,0 @@
-(defun replace (x y l )
-	(mapcar    (lambda (z)  (if ( eq x z ) y z) )
-	 l) 
-
-)

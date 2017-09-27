@@ -1,4 +1,0 @@
-(defun alt(l)
-	(if null l
-		nil
-		(cons (car l) (alt (cddr l)))))

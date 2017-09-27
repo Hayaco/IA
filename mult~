@@ -1,3 +1,0 @@
-(defun mult (l) 
-	apply ( '* (remove-if-not( 'numberp l))
-)
