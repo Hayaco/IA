@@ -1,3 +1,0 @@
-(defun linfan( n l) 
-	(remove-if-not (infan n) l)
-)
