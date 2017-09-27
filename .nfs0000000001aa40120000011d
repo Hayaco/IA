@@ -1,3 +1,0 @@
-(defun linfan( n l) 
-	(remove-if-not (lambda (x) ('< n x)))
-)
