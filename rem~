@@ -1,5 +1,0 @@
-(defun rem(x l)
-  (cond ((null l) nil)
-           ((eq (car l) x) (rem x (cdr l)) )
-           (T (cons (car l) (rem x (cdr l))))
-) )
