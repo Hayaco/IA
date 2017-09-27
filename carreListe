@@ -1,0 +1,3 @@
+(defun carreListe (l)
+	(mapcar '* l l)
+)

@@ -1,0 +1,15 @@
+(defun findAll( fct l)
+ (cond ((not l) nil)
+	(
+		(funcall fct (car l)) 
+		(cons 
+			(car l) 
+			(findAll fct (cdr l))
+		)
+	)
+	(T 
+		(findAll fct (cdr l))
+	)
+  )
+
+)

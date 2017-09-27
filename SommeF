@@ -1,0 +1,3 @@
+(defun sommeF (fct l)
+	(apply '+ (mapcar fct l ))
+)

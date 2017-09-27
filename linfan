@@ -1,0 +1,4 @@
+(defun linfan( n l) 
+	(remove-if-not (lambda (x) (< x n)) l)
+	; (remove-if-not (infan n) l)
+)

@@ -1,0 +1,31 @@
+(defun memm (x l)
+	(if (null l)
+		nil
+		(if (eq x (car l))
+			(remm x (cdr l))
+				(cons (car l)remm x (cdr(l)))
+)))
+
+
+defun alt (l)
+	(if (null l)
+		NIL
+		(cons(car l) (alt (cddr l)))
+))
+
+
+
+(defun aLaFin (x l)
+	(if(null l)
+		(list x)
+		(cons (car l)(defun x (cdr l)))
+))
+
+(defun aLaFin( x l)
+(append l (list x)))
+
+(defun inverse (l)
+	(card ((null l)l)
+		(T(ALaFin (car l)
+	(inverse (cdr l))
+))))

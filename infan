@@ -1,0 +1,4 @@
+(defun infan (n)
+	(lambda (x) (< x n))
+
+)

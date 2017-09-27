@@ -1,0 +1,3 @@
+(defun ajout (n l) 
+	(mapcar (lambda (x) (+ n x))  l)  
+)

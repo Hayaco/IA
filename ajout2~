@@ -1,0 +1,3 @@
+(defun ajout2 (n l)
+	(mapcar (lambda (x)  (if (numberp x) (+ n x))) l)  
+)

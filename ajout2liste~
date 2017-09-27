@@ -1,0 +1,3 @@
+(defun ajout2liste(n l1 l2)
+	(mapcar (lambda (x) (+ n x)) ( mapcar( '+ l1 l2))) 
+)
