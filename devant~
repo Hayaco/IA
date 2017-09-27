@@ -1,4 +1,0 @@
-(defun devant(x l)
-	(mapcar (lambda (z) (cons x (cadr l))) l) 
-)
-
