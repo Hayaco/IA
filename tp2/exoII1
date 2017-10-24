@@ -1,0 +1,39 @@
+(defun putprop (symb val prop)
+  (setf (get symb prop) val))
+
+(defun set-node(node feat-node  father-node op) 
+        (putprop node feat-node  'feature)
+        (putprop node father-node 'father)
+        (putprop node op 'operator)
+      node)
+
+(defun feature(node)
+  (get node 'feature))
+
+(defun father(node)
+  (get node 'father))
+
+(defun operator(node)
+  (get node 'operator))
+
+(defun new-node ( node op father-node)
+	(let (( feat-node (funcall op (feature father-node))))
+	(if feat-node 	
+		(set-node node feat-node father-node op)
+		nil
+	)
+	)
+)
+
+(defun children (node lop )
+	(remove nil (mapcar (lambda (x) (new-node (gensym) x  node) )lop ) 
+	) 
+)
+
+(defun seen (node Lnode)
+	(some (lambda (x) (equal  (feature x) (feature node))) Lnode)
+)
+
+
+
+

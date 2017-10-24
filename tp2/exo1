@@ -1,0 +1,19 @@
+(defun retourne(a)
+	(if (eq a 0) 1 0)
+)
+
+
+(defun left(l)
+	(list (retourne (car l)) (retourne (cadr l)) (caddr l)  		(cadddr l))
+)
+		 
+
+(defun middle(l)
+	(list (car l) (retourne (cadr l)) (retourne (caddr l)) 		(cadddr l))
+)
+
+
+(defun right(l)
+	(list (car l) (cadr l) (retourne (caddr l)) (retourne (cadddr l))	
+	)
+)

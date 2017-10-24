@@ -1,0 +1,37 @@
+(defun transformeOne(l)
+	(list (cadr l) (car l) (caddr l) (cadddr l))
+)
+
+(defun transformeThree(l)
+	(list (car l) (caddr l) (cadr l) (cadddr l))
+)
+
+(defun transformeFour(l)
+	(list (car l) (cadddr l) (caddr l) (cadr l))
+)
+
+(defun XAvantYdansL(x y l)
+	 (member y (member x l))
+)  
+		
+(defun verifieEtat(l )
+	(if (XAvantYdansL 'a 'd l ) l nil) 
+)
+
+(defun one(l)
+	(verifieEtat (transformeOne l))
+)
+
+(defun Three(l)
+	(verifieEtat (transformeThree l))
+)
+
+(defun Four(l)
+	 (verifieEtat (transformeFour l))
+)
+
+
+
+
+
+

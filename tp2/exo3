@@ -1,0 +1,43 @@
+(defun transformeListeA(l nbr)
+	(cons nbr (cdr l))
+)
+
+(defun transformeListeB(l nbr)
+	(list (car l) nbr (caddr l))
+)
+
+(defun transformeListeC(l nbr)
+	(list (car l)  (cadr l) nbr )
+)
+
+(defun EstDifferent (a b)
+	(not (eq a b))
+)
+
+(defun 1a(l)
+	(if (and 
+		(EstDifferent 1 (car l)) 
+		(EstConforme(transformeListeA(l))
+	) nil)
+)
+
+(defun EstConforme(l)
+
+)
+
+(defun ConformeB(l)
+	(if (eq (car l) (cadr l) nil T))
+)
+
+(defun ConformeC(l)
+	(if (and 
+		(eq (car l) (caddr l)) 
+		(eq (cadr l) (caddr l))
+	     ) 
+	nil
+	T)
+)
+
+
+		
+

@@ -1,0 +1,13 @@
+(defun Peutmodifier(l b)
+	(if (eq (car l) (cadr l)) nil T)
+)
+
+(defun Peutmodifier(l c)
+	(if (and 
+		(eq (car l) (caddr l)) 
+		(eq (cadr l) (caddr l))
+	     ) 
+	nil
+	T)
+)
+
