@@ -1,0 +1,32 @@
+(deftemplate garcon (slot nom)(slot cueille)(multislot interdit))
+
+(deffacts cueillette
+(garcon (nom alain ) (interdit arnica rhododendron eldelweis chardon ))
+(garcon (nom JM) (interdit rhododendron edelweis chardon))
+(garcon (nom eric) (interdit edelweis chardon ))
+(garcon (nom daniel) (interdit edelweis))
+(fleurs gentiane arnica rhododendron eldelweis chardon) 
+)
+
+(defrule affecter
+(fleurs $? ?y $?)
+?f <- (garcon (nom ?x)(cueille nil))
+(not (garcon (nom ?x ) (interdit $? ?y $?) ) )
+(forall (fleurs $? ?z&~?y $?) (garcon (nom ?x) (interdit $? ?z $? )))
+=>
+(printout t ?x " cueille " ?y crlf)
+(modify ?f (cueille ?y))
+)
+
+
+(defrule interdire
+?f <- (garcon (nom ?x) (interdit $?l1))
+(garcon (nom ?y&~?x) (cueille ?z&~nil )(interdit $?l))
+(test (not (member ?z ?l1)))
+=>
+(printout t  "Interdit pour " ?x " la fleur " ?z crlf) 
+(modify ?f (interdit ?z $?l1))
+)
+
+
+;(load "/users/coheha14/Bureau/IA/tp3/tp3")

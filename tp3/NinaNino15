@@ -1,0 +1,109 @@
+(deftemplate humain (slot nom)(slot age)(slot pere)(slot mere)(multislot ancetre))
+(deffacts famille_1 
+(humain(nom Luc)(pere Charlot)(mere Charlotte)(age 5)) 
+(humain(nom Eva)(pere Charlot)(mere Charlotte)(age 7))
+(humain(nom Ida)(pere Charlot)(mere Charlotte)(age 2))
+
+(humain(nom Max)(pere Charlot)(mere Charlotte)(age 10))
+(humain(nom Charlotte)(pere jules)(mere julie)(age 35))
+(humain(nom Marie)(pere jules)(mere julie)(age 30))
+(humain(nom Arthur)(pere jules)(mere julie)(age 27))
+(humain(nom jules)(pere nino)(mere nina)(age 60))
+)
+
+(defrule merepere
+(recherche ?x)
+?f <-  (humain (nom ?x)(ancetre $?l)) 
+(or (humain (nom ?x)(pere ?y&~nil)) (humain (nom ?x)(mere ?y&~nil)) )
+(not (humain (nom ?x) (ancetre $? ?y $?)  ))
+
+=>
+(modify ?f (ancetre ?y $?l))
+
+)
+
+;===============================================
+
+;(defrule ancetre
+;?f <- (humain (nom ?n)(ancetre $?l1 ?a $?l2))
+;(humain (nom ?a) (ancetre $? ?aa $?))
+;(test (and (not (member ?aa $?l1)) (not (member ?aa $?l2))) )
+;=>
+;(modify ?f (ancetre ?aa $?l1 ?a $?l2))
+
+;)
+; le pere ou la mere dun ancetre est un ancetre
+
+(defrule ancetrepere
+?f <- (humain (nom ?n) (ancetre $?l1 ?a $?l2))
+(humain (nom ?a) (pere ?y))
+(test (and (not (member ?y $?l1)) (not (member ?y $?l2))) )
+=>
+(modify ?f (ancetre ?y $?l1 ?a $?l2))
+)
+
+
+(defrule ancetremere
+?f <- (humain (nom ?n) (ancetre $?l1 ?a $?l2))
+(humain (nom ?a) (mere ?y))
+(test (and (not (member ?y $?l1)) (not (member ?y $?l2))) )
+=>
+(modify ?f (ancetre ?y $?l1 ?a $?l2))
+
+)
+(defrule ancetre
+?f <- (humain (nom ?n) (ancetre $?l1 ?a $?l2))
+( or (humain (nom ?a) (mere ?y)) (humain (nom ?a) (pere ?y)))
+(test (and (not (member ?y $?l1)) (not (member ?y $?l2))) )
+=>
+(modify ?f (ancetre ?y $?l1 ?a $?l2))
+
+)
+
+
+(defrule rr => (assert (recherche (read))))
+;(load "/users/coheha14/Bureau/IA/tp3/NinaNino15")
+
+(defrule interdire
+?f <- (garcon (nom ?x) )
+(garcon (nom ?y&~?x) (cueille ?z ))
+=>
+(printout t ?x  " interdit pour " ?x " la fleur " ?z) 
+(modify ?f (interdit ?z ?))
+)
+
+
+(defrule affecter
+(fleurs $? ?f $?)
+
+?h <- (garcon (nom ?p) (cueille ~?f) (interdit $?l))
+
+(test (not (member ?f $?l)))
+
+(forall (ceuille $? ?x&~?f $?)
+
+(test (member ?x $?l))
+
+)
+
+=>
+
+(printout t " la fleur est " ?f crlf)
+
+(modify ?h (cueille ?f))
+
+)
+
+(defrule affecter
+(fleurs $? ?y $?)
+?f <- (garcon (nom ?x)(cueille nil))
+(not (garcon (nom ?x ) (interdit $? ?y $?) ) )
+(forall (fleurs $? ?z&~?y $?) (garcon (nom ?x) (interdit $? ?z $? )))
+=>
+(printout t ?x " cueille " ?y crlf)
+(modify ?f (cueille ?y))
+)
+
+
+
+
